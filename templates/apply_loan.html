@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Easy Loan App - Apply Loan</title>
+  <script src="{% static 'js/script.js' %}"></script>
+  <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body class="min-h-screen bg-surface text-on-surface p-6 md:p-10">
+  <div class="max-w-4xl mx-auto">
+    <div class="flex items-center justify-between mb-8">
+      <div>
+        <p class="text-sm font-semibold text-secondary uppercase tracking-[0.2em]">Easy Loan App</p>
+        <h1 class="text-3xl font-headline font-extrabold text-primary mt-2">Loan Application</h1>
+      </div>
+      <a href="{% url 'dashboard' %}" class="text-primary font-semibold">Back to Dashboard</a>
+    </div>
+
+    <div class="bg-surface-container-lowest rounded-xl shadow-xl p-8">
+      <form action="{% url 'dashboard' %}" method="get" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <input name="loan_type" type="text" class="rounded-xl border-outline-variant bg-surface-container-low" placeholder="Loan type">
+        <input name="amount" type="text" class="rounded-xl border-outline-variant bg-surface-container-low" placeholder="Requested amount">
+        <input name="term" type="text" class="rounded-xl border-outline-variant bg-surface-container-low" placeholder="Repayment term">
+        <input name="purpose" type="text" class="rounded-xl border-outline-variant bg-surface-container-low" placeholder="Loan purpose">
+        <textarea name="notes" class="rounded-xl border-outline-variant bg-surface-container-low md:col-span-2 min-h-32" placeholder="Additional details"></textarea>
+        <button type="submit" class="md:col-span-2 rounded-xl bg-primary text-white py-3 font-semibold shadow-lg shadow-primary/20">
+          Submit Application
+        </button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

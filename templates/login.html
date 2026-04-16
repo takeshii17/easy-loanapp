@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Easy Loan App - Login</title>
+  <script src="{% static 'js/script.js' %}"></script>
+  <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body class="min-h-screen bg-surface text-on-surface flex items-center justify-center p-6">
+  <div class="w-full max-w-md bg-surface-container-lowest rounded-xl shadow-xl p-8">
+    <div class="mb-8">
+      <p class="text-sm font-semibold text-secondary uppercase tracking-[0.2em]">Easy Loan App</p>
+      <h1 class="text-3xl font-headline font-extrabold text-primary mt-2">Sign in</h1>
+      <p class="text-sm text-on-surface-variant mt-2">Continue to your loan dashboard.</p>
+    </div>
+
+    <form action="{% url 'dashboard' %}" method="get" class="space-y-4">
+      <div>
+        <label class="block text-sm font-medium mb-2" for="email">Email</label>
+        <input id="email" name="email" type="email" class="w-full rounded-xl border-outline-variant bg-surface-container-low" placeholder="your@gmail.com">
+      </div>
+      <div>
+        <label class="block text-sm font-medium mb-2" for="password">Password</label>
+        <input id="password" name="password" type="password" class="w-full rounded-xl border-outline-variant bg-surface-container-low" placeholder="Enter your password">
+      </div>
+      <button type="submit" class="w-full rounded-xl bg-primary text-white py-3 font-semibold shadow-lg shadow-primary/20">
+        Go to Dashboard
+      </button>
+    </form>
+
+    <p class="text-sm text-on-surface-variant mt-6">
+      Need an account?
+      <a href="{% url 'register' %}" class="text-primary font-semibold">Register here</a>
+    </p>
+  </div>
+</body>
+</html>

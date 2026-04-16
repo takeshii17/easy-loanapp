@@ -1,0 +1,263 @@
+{% load static %}
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Easy Loan App - Dashboard</title>
+  <script src="{% static 'js/script.js' %}"></script>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body class="bg-surface text-on-surface">
+  <header class="sticky top-0 z-50 flex justify-between items-center px-8 w-full bg-white/80 backdrop-blur-xl h-16 border-b border-[#bec9c8]/15">
+    <div class="flex items-center gap-8">
+      <span class="text-xl font-bold text-[#005050] dark:text-teal-500 tracking-tight font-headline">Easy Loan App</span>
+      <div class="hidden md:flex items-center bg-surface-container-low px-4 py-1.5 rounded-xl gap-3">
+        <span class="material-symbols-outlined text-outline text-sm">search</span>
+        <input class="bg-transparent border-none focus:ring-0 text-sm w-64 placeholder:text-outline" placeholder="Search accounts..." type="text">
+      </div>
+    </div>
+    <div class="flex items-center gap-4">
+      <button class="flex items-center gap-2 px-4 py-2 hover:bg-[#f1f4f3] transition-all duration-200 rounded-xl" type="button">
+        <span class="material-symbols-outlined text-primary">notifications</span>
+      </button>
+      <button class="flex items-center gap-2 px-4 py-2 hover:bg-[#f1f4f3] transition-all duration-200 rounded-xl" type="button">
+        <span class="material-symbols-outlined text-primary">help_outline</span>
+      </button>
+      <a class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2 rounded-xl font-medium text-sm transition-transform active:scale-95 shadow-lg shadow-primary/10 inline-flex items-center" href="{% url 'apply_loan' %}">
+        Quick Apply
+      </a>
+    </div>
+  </header>
+
+  <div class="flex min-h-screen">
+    <aside class="fixed left-0 top-0 h-full flex flex-col py-6 px-4 bg-[#f1f4f3] dark:bg-slate-950 w-64 border-r border-[#bec9c8]/15 z-40 pt-20">
+      <div class="mb-8 px-4">
+        <h2 class="text-lg font-black text-[#005050] font-headline">Architectural Ledger</h2>
+        <p class="text-xs text-on-secondary-fixed-variant opacity-70">Premium Finance Portal</p>
+      </div>
+
+      <nav class="flex-1 space-y-1 overflow-y-auto">
+        <a class="flex items-center gap-3 px-4 py-3 text-[#005050] dark:text-teal-400 font-semibold border-l-4 border-[#005050] bg-white/50 dark:bg-slate-900/50 font-headline text-sm tracking-wide transition-transform duration-200 ease-out" href="{% url 'dashboard' %}">
+          <span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+          <span>Dashboard Overview</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-[#005050] hover:translate-x-1 font-headline text-sm tracking-wide transition-transform duration-200 ease-out" href="{% url 'apply_loan' %}">
+          <span class="material-symbols-outlined" data-icon="add_box">add_box</span>
+          <span>Apply Loan</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-[#005050] hover:translate-x-1 font-headline text-sm tracking-wide transition-transform duration-200 ease-out" href="{% url 'my_loans' %}">
+          <span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+          <span>My Loans</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-[#005050] hover:translate-x-1 font-headline text-sm tracking-wide transition-transform duration-200 ease-out" href="{% url 'dashboard' %}">
+          <span class="material-symbols-outlined" data-icon="payments">payments</span>
+          <span>Payments</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-[#005050] hover:translate-x-1 font-headline text-sm tracking-wide transition-transform duration-200 ease-out" href="{% url 'dashboard' %}">
+          <span class="material-symbols-outlined" data-icon="calculate">calculate</span>
+          <span>Loan Calculator</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-[#005050] hover:translate-x-1 font-headline text-sm tracking-wide transition-transform duration-200 ease-out" href="{% url 'dashboard' %}">
+          <span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+          <span>Notifications</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-[#005050] hover:translate-x-1 font-headline text-sm tracking-wide transition-transform duration-200 ease-out" href="{% url 'dashboard' %}">
+          <span class="material-symbols-outlined" data-icon="description">description</span>
+          <span>Documents</span>
+        </a>
+
+        <div class="pt-6 mt-6 border-t border-outline-variant/15">
+          <a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-[#005050] hover:translate-x-1 font-headline text-sm tracking-wide transition-transform duration-200 ease-out" href="{% url 'dashboard' %}">
+            <span class="material-symbols-outlined" data-icon="person">person</span>
+            <span>Profile</span>
+          </a>
+          <a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-[#005050] hover:translate-x-1 font-headline text-sm tracking-wide transition-transform duration-200 ease-out" href="{% url 'dashboard' %}">
+            <span class="material-symbols-outlined" data-icon="settings">settings</span>
+            <span>Settings</span>
+          </a>
+        </div>
+      </nav>
+
+      <div class="mt-auto p-4">
+        <a class="block w-full py-3 bg-secondary-container text-secondary font-bold rounded-xl text-xs uppercase tracking-widest hover:brightness-95 transition-all text-center" href="{% url 'apply_loan' %}">
+          New Application
+        </a>
+      </div>
+    </aside>
+
+    <main class="flex-1 ml-64 p-8 bg-surface">
+      <div class="flex justify-between items-end mb-12">
+        <div>
+          <span class="text-secondary font-semibold tracking-wider text-xs uppercase">Welcome Back</span>
+          <h1 class="text-4xl font-extrabold text-primary font-headline mt-1">Alex Sterling</h1>
+        </div>
+        <div class="text-right">
+          <p class="text-outline text-sm font-medium">Account Status</p>
+          <span class="text-primary font-bold flex items-center gap-1">
+            <span class="material-symbols-outlined text-sm filled-icon">verified</span>
+            Verified Premium
+          </span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
+        <div class="bg-surface-container-lowest p-8 rounded-xl shadow-sm border-l-4 border-primary">
+          <p class="text-outline text-xs font-bold uppercase tracking-widest mb-2">Total Active Balance</p>
+          <h3 class="text-4xl font-headline font-extrabold text-primary">$12,450.00</h3>
+        </div>
+        <div class="bg-surface-container-low p-8 rounded-xl">
+          <p class="text-outline text-xs font-bold uppercase tracking-widest mb-2">Next Payment</p>
+          <div class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-secondary">calendar_today</span>
+            <h3 class="text-2xl font-headline font-bold text-on-surface">Oct 24, 2023</h3>
+          </div>
+        </div>
+        <div class="bg-surface-container-low p-8 rounded-xl">
+          <p class="text-outline text-xs font-bold uppercase tracking-widest mb-2">Due Amount</p>
+          <h3 class="text-2xl font-headline font-bold text-error">$425.50</h3>
+          <p class="text-xs text-on-surface-variant mt-1">Scheduled for automatic debit</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 xl:grid-cols-12 gap-8">
+        <div class="xl:col-span-8 space-y-8">
+          <section class="bg-surface-container-low p-8 rounded-xl relative overflow-hidden">
+            <div class="relative z-10">
+              <div class="flex justify-between items-center mb-8">
+                <h4 class="text-lg font-bold font-headline text-primary">Education Loan Progress</h4>
+                <span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-xs font-bold">65% Paid</span>
+              </div>
+              <div class="flex items-center gap-4 mb-4">
+                <div class="flex-1 h-2 bg-outline-variant/20 rounded-full overflow-hidden">
+                  <div class="h-full bg-primary w-[65%] rounded-full"></div>
+                </div>
+              </div>
+              <div class="flex justify-between items-start">
+                <div class="flex gap-12">
+                  <div class="flex flex-col">
+                    <span class="text-outline text-[10px] font-bold uppercase tracking-tighter">Paid to Date</span>
+                    <span class="text-lg font-bold font-headline">$23,075.00</span>
+                  </div>
+                  <div class="flex flex-col">
+                    <span class="text-outline text-[10px] font-bold uppercase tracking-tighter">Remaining</span>
+                    <span class="text-lg font-bold font-headline">$12,450.00</span>
+                  </div>
+                </div>
+                <p class="text-secondary text-sm font-medium italic">"You are 4 months ahead of schedule. Great work!"</p>
+              </div>
+            </div>
+            <div class="absolute -right-12 -bottom-12 opacity-5">
+              <span class="material-symbols-outlined text-[180px]">school</span>
+            </div>
+          </section>
+
+          <section>
+            <div class="flex justify-between items-center mb-6">
+              <h4 class="text-xl font-bold font-headline text-primary">Recent Activity</h4>
+              <button class="text-primary text-sm font-semibold underline underline-offset-4 decoration-surface-tint/30" type="button">View All Transactions</button>
+            </div>
+            <div class="space-y-4">
+              <div class="flex items-center justify-between p-4 bg-surface-container-lowest rounded-xl hover:bg-surface-container-low transition-colors duration-200">
+                <div class="flex items-center gap-4">
+                  <div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center text-secondary">
+                    <span class="material-symbols-outlined">payments</span>
+                  </div>
+                  <div>
+                    <p class="font-bold text-on-surface">Monthly Installment</p>
+                    <p class="text-xs text-outline">Ref: EDU-2023-442 &bull; Sept 24, 2023</p>
+                  </div>
+                </div>
+                <div class="text-right">
+                  <p class="font-bold text-error">-$425.50</p>
+                  <p class="text-[10px] font-bold uppercase text-outline">Processed</p>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between p-4 bg-surface-container-lowest rounded-xl hover:bg-surface-container-low transition-colors duration-200">
+                <div class="flex items-center gap-4">
+                  <div class="w-12 h-12 rounded-full bg-primary-container/20 flex items-center justify-center text-primary">
+                    <span class="material-symbols-outlined">account_balance</span>
+                  </div>
+                  <div>
+                    <p class="font-bold text-on-surface">Loan Disbursement</p>
+                    <p class="text-xs text-outline">Incremental Release &bull; Aug 12, 2023</p>
+                  </div>
+                </div>
+                <div class="text-right">
+                  <p class="font-bold text-primary">+$5,000.00</p>
+                  <p class="text-[10px] font-bold uppercase text-outline">Credited</p>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between p-4 bg-surface-container-lowest rounded-xl hover:bg-surface-container-low transition-colors duration-200">
+                <div class="flex items-center gap-4">
+                  <div class="w-12 h-12 rounded-full bg-surface-variant flex items-center justify-center text-on-surface-variant">
+                    <span class="material-symbols-outlined">receipt_long</span>
+                  </div>
+                  <div>
+                    <p class="font-bold text-on-surface">Credit Fee</p>
+                    <p class="text-xs text-outline">Service Maintenance &bull; July 01, 2023</p>
+                  </div>
+                </div>
+                <div class="text-right">
+                  <p class="font-bold text-on-surface">-$15.00</p>
+                  <p class="text-[10px] font-bold uppercase text-outline">Processed</p>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <div class="xl:col-span-4 space-y-6">
+          <div class="bg-tertiary text-on-tertiary-container p-8 rounded-xl relative group cursor-pointer hover:bg-tertiary-container transition-colors shadow-xl shadow-tertiary/10">
+            <span class="material-symbols-outlined text-4xl mb-4 block" data-icon="calculate">calculate</span>
+            <h4 class="text-2xl font-bold font-headline mb-2">Loan Calculator</h4>
+            <p class="text-sm opacity-80 mb-6">Estimate your future repayments with our architectural precision tool.</p>
+            <div class="flex items-center gap-2 font-bold text-sm">
+              Try Now <span class="material-symbols-outlined transition-transform group-hover:translate-x-2">arrow_right_alt</span>
+            </div>
+          </div>
+
+          <div class="bg-surface-container-low p-6 rounded-xl">
+            <div class="flex items-center gap-2 mb-6">
+              <span class="material-symbols-outlined text-error filled-icon">error</span>
+              <h4 class="font-bold font-headline text-on-surface">Active Alerts</h4>
+            </div>
+            <div class="space-y-4">
+              <div class="p-4 bg-surface-container-lowest rounded-lg border-l-2 border-error">
+                <p class="text-xs font-bold text-error uppercase mb-1">Upcoming Expiry</p>
+                <p class="text-sm text-on-surface">Document 'Insurance_2023.pdf' expires in 14 days.</p>
+              </div>
+              <div class="p-4 bg-surface-container-lowest rounded-lg border-l-2 border-primary">
+                <p class="text-xs font-bold text-primary uppercase mb-1">New Offer</p>
+                <p class="text-sm text-on-surface">You are eligible for a 1% rate reduction on refinance.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="rounded-xl overflow-hidden h-64 relative">
+            <img alt="Modern corporate building interior" class="w-full h-full object-cover" data-alt="abstract architectural shot of modern office building interior with clean lines, soft natural lighting, and teal accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_uIV-AMAeTnULi6Wcp_3n1g9hRbYDnZ9yqiqNHnLCGeTw_qltFEsAK2Yj6sGHzE5nXcAzLNdT-wuIOxMUYEvYXYyZ3xXcOvOWfbI8zJRMirzmr0vRmmU4nlrx46GzY1Mp0t1RlCs_oD5E5Pah_8ZzU75mz5ht3Ip8zfdhK1Ns2_n2tz4MSe6UuLrkUEGB8ri84_wt6V3vK_evqom2bNkioDbmDQC29WyClkEjsfUPA_usrzS6cjSLRhWGAWnGlKI2i-OdkbU1bPc">
+            <div class="absolute inset-0 bg-gradient-to-t from-primary/90 to-transparent p-6 flex flex-col justify-end">
+              <h5 class="text-white font-bold font-headline text-lg">Financial Guidance</h5>
+              <p class="text-white/80 text-xs">Book a free session with an advisor today.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div class="fixed bottom-8 right-8 z-50">
+    <a class="flex items-center gap-3 bg-white/80 backdrop-blur-xl border border-outline-variant/15 px-6 py-4 rounded-full shadow-2xl hover:bg-surface-container-lowest transition-all group active:scale-95" href="{% url 'apply_loan' %}">
+      <span class="material-symbols-outlined text-primary bg-primary-container/20 p-2 rounded-full" data-icon="add">add</span>
+      <span class="text-primary font-bold text-sm tracking-wide">New Application</span>
+    </a>
+  </div>
+</body>
+</html>
