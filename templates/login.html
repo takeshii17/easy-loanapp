@@ -13,32 +13,87 @@
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
-<body class="min-h-screen bg-surface text-on-surface flex items-center justify-center p-6">
-  <div class="w-full max-w-md bg-surface-container-lowest rounded-xl shadow-xl p-8">
-    <div class="mb-8">
-      <p class="text-sm font-semibold text-secondary uppercase tracking-[0.2em]">Easy Loan App</p>
-      <h1 class="text-3xl font-headline font-extrabold text-primary mt-2">Sign in</h1>
-      <p class="text-sm text-on-surface-variant mt-2">Continue to your loan dashboard.</p>
+<body class="login-body">
+  <header class="login-topbar">
+    <a href="{% url 'login' %}" class="login-logo">Easy Loan App</a>
+    <nav class="login-nav" aria-label="Primary navigation">
+      <a href="#">Solutions</a>
+      <a href="#">About</a>
+      <a href="#">Help</a>
+    </nav>
+  </header>
+
+  <main class="login-main">
+    <section class="login-card" aria-label="Sign in form">
+      <div class="login-icon">
+        <span class="material-symbols-outlined" aria-hidden="true">account_balance</span>
+      </div>
+
+      <div class="login-card-header">
+        <h1>Welcome Back</h1>
+        <p>Sign in to manage your loan applications</p>
+      </div>
+
+      <form action="{% url 'dashboard' %}" method="get" class="login-form">
+        <label class="login-field" for="email">
+          <span>Email Address</span>
+          <input id="email" name="email" type="email" placeholder="name@company.com" autocomplete="email">
+        </label>
+
+        <div class="login-password-row">
+          <label for="password">Password</label>
+          <a href="#">Forgot Password?</a>
+        </div>
+
+        <label class="login-field login-field-password" for="password">
+          <input id="password" name="password" type="password" placeholder="••••••••" autocomplete="current-password">
+        </label>
+
+        <label class="login-remember">
+          <input type="checkbox" name="remember">
+          <span>Remember Me</span>
+        </label>
+
+        <button type="submit" class="login-submit">
+          Sign In
+        </button>
+      </form>
+
+      <div class="login-divider">
+        <span></span>
+        <p>Or continue with</p>
+        <span></span>
+      </div>
+
+      <div class="login-socials">
+        <button type="button" class="login-social-btn">
+          <strong>GOOGLE</strong>
+          <span>Google</span>
+        </button>
+        <button type="button" class="login-social-btn">
+          <strong>iOS</strong>
+          <span>Apple</span>
+        </button>
+      </div>
+
+      <p class="login-register">
+        Don't have an account?
+        <a href="{% url 'register' %}">Apply for a Loan</a>
+      </p>
+    </section>
+  </main>
+
+  <footer class="login-footer">
+    <p class="login-footer-logo">Easy Loan App</p>
+    <div class="login-footer-content">
+      <nav aria-label="Footer navigation">
+        <a href="#">Terms of Service</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Security Standards</a>
+        <a href="#">Contact Support</a>
+      </nav>
+      <p>&copy; 2024 Easy Loan App Financial Systems. All rights reserved.</p>
     </div>
-
-    <form action="{% url 'dashboard' %}" method="get" class="space-y-4">
-      <div>
-        <label class="block text-sm font-medium mb-2" for="email">Email</label>
-        <input id="email" name="email" type="email" class="w-full rounded-xl border-outline-variant bg-surface-container-low" placeholder="your@gmail.com">
-      </div>
-      <div>
-        <label class="block text-sm font-medium mb-2" for="password">Password</label>
-        <input id="password" name="password" type="password" class="w-full rounded-xl border-outline-variant bg-surface-container-low" placeholder="Enter your password">
-      </div>
-      <button type="submit" class="w-full rounded-xl bg-primary text-white py-3 font-semibold shadow-lg shadow-primary/20">
-        Go to Dashboard
-      </button>
-    </form>
-
-    <p class="text-sm text-on-surface-variant mt-6">
-      Need an account?
-      <a href="{% url 'register' %}" class="text-primary font-semibold">Register here</a>
-    </p>
-  </div>
+  </footer>
 </body>
 </html>
